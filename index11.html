@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style11.css">
+    <title>proje11</title>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <img src="img/zyro-image (1).png" alt="img">
+            <h4>Ronaldo</h4>
+            <h5>Football</h5>
+            <div class="details">
+                <div class="column">
+                    <h2>1.6K</h2>
+                    <span>Followers</span>
+                </div>
+
+                <div class="column">
+                    <h2>865</h2>
+                    <span>Following</span>
+                </div>
+            </div>
+            <div class="buttons">
+                <button>Follow</button>
+                <button>Message</button>
+            </div>
+        </div>
+        <div class="themes">
+            <button class="btn btn1"></button>
+            <button class="btn btn2"></button>
+            <button class="btn btn3"></button>
+            <button class="btn btn4"></button>
+            <button class="btn btn5"></button>
+        </div>
+    </div>
+
+    <script>
+        const theme = document.querySelector(':root'); 
+        const btns = document.querySelectorAll('.btn');
+
+        btns.forEach(function(btn){
+
+            btn.addEventListener("click", function(e){
+
+                const color = e.currentTarget.classList;
+
+                if(color.contains("btn1")){
+                    theme.style.setProperty("--theme-color", "#3498db");
+                }
+                else if(color.contains("btn2")){
+                    theme.style.setProperty("--theme-color", "#ff1756");
+                }
+                else if(color.contains("btn3")){
+                    theme.style.setProperty("--theme-color", "#1cb65d");
+                }
+                else if(color.contains("btn4")){
+                    theme.style.setProperty("--theme-color", "#8e44ad");
+                }
+                else{
+                    theme.style.setProperty("--theme-color", "#f4b932");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

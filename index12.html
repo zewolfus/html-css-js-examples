@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style12.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="scores">
+            <p>Computer : 
+                <span id="computer_score">0</span>
+            </p>
+            <p>
+                You:
+                <span id="user_score">0</span>
+            </p>
+        </div>
+        <div class="weapons">
+            <button onclick="checker('rock')">
+                <i class="fa-regular fa-hand-back-fist"></i>
+            </button>
+            <button  onclick="checker('paper')">
+                <i class="fa-regular fa-hand"></i>
+            </button>
+            <button onclick="checker('scissor')">
+                <i class="fa-regular fa-hand-scissors"></i>
+            </button>
+        </div>
+        <div class="details">
+            <p id="user_choice"></p>
+            <p id="comp_choice"></p>
+            <p id="result"></p>
+        </div>
+    </div>
+    
+
+    <script>
+        let [computer_score,user_score]=[0,0];
+        let result_rel = document.getElementById("result");
+        let choices_object = {
+            'rock' : {
+                'rock' : 'draw',
+                'scissor' : 'win',
+                'paper' : 'lose'
+            },
+            'scissor' : {
+                'rock' : 'lose',
+                'scissor' : 'draw',
+                'paper' : 'win'
+            },
+                'paper' : {
+                'rock' : 'win',
+                'scissor' : 'lose',
+                'paper' : 'draw'
+            }
+        }
+
+        function checker(input){
+            var choices = ["rock", "paper", "scissor"];
+            var num = Math.floor(Math.random()*3);
+
+            document.getElementById("comp_choice").innerHTML 
+            = ` computer choose <span> ${choices[num].
+            toUpperCase()} </span>`;
+
+            document.getElementById("user_choice").innerHTML =
+            ` you choose <span> ${input.toUpperCase()} </span>`;
+
+            let computer_choice = choices[num];
+
+            switch(choices_object[input][computer_choice]){
+                case 'win':
+                    result_rel.style.cssText = "background-color: #cefdce; color: #689f38";
+                    result_rel.innerHTML = "YOU WIN";
+                    user_score++;
+                    break;
+                    
+                case 'lose':
+                    result_rel.style.cssText = "background-color: #ffdde0; color: #d32f2f";
+                    result_rel.innerHTML = "YOU LOSE";
+                    computer_score++;
+                    break;
+                    
+                default:
+                    result_rel.style.cssText = "background-color: #e5e5e5; color: #808080";
+                    result_rel.innerHTML = "DRAW";
+                    break;
+
+            }
+            document.getElementById("computer_score").innerHTML = computer_score;
+            document.getElementById("user_score").innerHTML = user_score;
+        }
+    </script>
+</body>
+</html>

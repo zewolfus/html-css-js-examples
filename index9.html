@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style9.css">
+    <title>proje8</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <input type="range" min="20" max="200" value="20" id="weight" oninput="calculate()
+            ">
+            <span id="weight-val">20 kg</span>
+        </div>
+        <div class="row">
+            <input type="range" min="100" max="250" value="100" id="height" oninput="calculate()
+            ">
+            <span id="height-val">100 cm</span>
+        </div>
+
+
+        <p id="result">20.0</p>
+        <p id="category">normal weight</p>
+    </div>
+
+
+
+    <script>
+        function calculate(){
+            var bmi;
+            var result = document.getElementById("result");
+
+            var weight = parseInt(document.getElementById("weight").value);
+            document.getElementById("weight-val").textContent = 
+            weight + " kg";
+
+            var height = parseInt(document.getElementById("height").value);
+            document.getElementById("height-val").textContent = 
+            height + " cm";
+            bmi = (weight / Math.pow( (height/100), 2)).toFixed(1);
+            result.textContent = bmi;
+            if(bmi < 18.5){
+                category = "Underweight";
+                result.style.color = "#ffc44d";
+            }
+            else if(bmi >= 18.5 && bmi <= 24.9){
+                category = "normal weight";
+                result.style.color = "#0be881"
+
+            }
+            else if( bmi >= 25 && bmi <= 29.9 ){
+                category = "Overweight";
+                result.style.color = "#ff884d"
+            }
+            else{
+                category ="Obese";
+                result.style.color = "#ff5e57"
+            }
+            document.getElementById("category").textContent =
+            category;
+
+        }
+    </script>
+</body>
+</html>

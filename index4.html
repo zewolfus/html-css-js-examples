@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <title>project</title>
+</head>
+<body>
+    <div class="container">
+        <div id="newtask">
+            <input type="text" placeholder="task to be done..">
+            <button id="push">add</button>
+        </div>
+        <div id="tasks"></div>
+    </div>
+
+
+
+
+    <script>
+        document.querySelector('#push').onclick  = function(){
+            if(document.querySelector('#newtask input').
+            value.length == 0){
+                alert("please enter a task")
+            }
+            else{
+                document.querySelector('#tasks').innerHTML+= `
+                <div class="task">
+                    <span id="taskname">
+                    ${document.querySelector(
+                        '#newtask input'
+                    ).value}    
+                    </span>
+                    <button class="delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                    </div>
+                `;
+
+                var current_tasks = document.querySelectorAll(".delete");
+                for(var i=0; i<current_tasks.length; i++){
+                    current_tasks[i].onclick = function(){
+                        this.parentNode.remove();
+                    }
+                }
+                var tasks = document.querySelectorAll(".tasks");
+                for(var i=0; i<tasks.length; i++){
+                    tasks[i].onclick = function(){
+                        this.classLİst.toggle('completed');
+                    }
+                }
+                document.querySelector("#newtask input").value = "";
+                
+            }
+        }
+    </script>
+</body>
+</html>
