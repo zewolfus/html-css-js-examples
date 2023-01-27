@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>box-hover</title>
+    <style>
+        .boxs{
+            display: flex;
+            gap: 1rem;
+        }
+        .boxs>div{
+            flex: 1;
+            background-color:violet;
+            border-radius: 16px;
+            height: 250px;
+            transition: all 0.4s;
+        }
+        .boxs:hover> :not(:hover){
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="boxs">
+        <div></div><div></div>
+        <div></div><div></div>
+    </div>
+</body>
+</html>
